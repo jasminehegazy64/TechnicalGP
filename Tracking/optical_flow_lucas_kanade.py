@@ -1,7 +1,7 @@
 import cv2 
 import numpy as np
 
-class OpticalFlowAnalyzer:
+class OpticalFlowAnalyzerLucasKanade:
     def __init__(self, vid_path, output_path):
         self.cap = cv2.VideoCapture(vid_path)
         self.frame_width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))

@@ -9,7 +9,7 @@ import os
 from Tracking.optical_flow_fernback import OpticalFlowAnalyzer
 from Tracking.Images_to_Vid import images_to_video 
 from Orbit_Determination.orbit_determination import SatelliteAnalyzer
-from Tracking.
+from 
 
 
 
@@ -69,5 +69,5 @@ fps=5
 # analyzer.analyze()
 
 output_path = r"C:\Users\USER\Desktop\TechnicalGP\Tracking\LUC-KANOUT.MP4"
-analyzer = OpticalFlowAnalyzer(vid_path, output_path)
+analyzer = OpticalFlowAnalyzerLucasKanade(vid_path, output_path)
 analyzer.process_video()
