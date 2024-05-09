@@ -9,7 +9,8 @@ import os
 from Tracking.optical_flow_fernback import OpticalFlowAnalyzer
 from Tracking.Images_to_Vid import images_to_video 
 from Orbit_Determination.orbit_determination import SatelliteAnalyzer
-from 
+from Tracking.optical_flow_lucas_kanade import OpticalFlowAnalyzerLucasKanade
+from Tracking.optical_flow_horn_schunk import OpticalFlowAnalyzerHornSchunck
 
 
 
@@ -68,6 +69,13 @@ fps=5
 # analyzer = SatelliteAnalyzer(fits_directory)
 # analyzer.analyze()
 
-output_path = r"C:\Users\USER\Desktop\TechnicalGP\Tracking\LUC-KANOUT.MP4"
-analyzer = OpticalFlowAnalyzerLucasKanade(vid_path, output_path)
+# output_path = r"C:\Users\USER\Desktop\TechnicalGP\Tracking\LUC-KANOUT.MP4"
+# analyzer = OpticalFlowAnalyzerLucasKanade(vid_path, output_path)
+# analyzer.process_video()
+
+
+
+
+output_path = r"C:\Users\USER\Desktop\TechnicalGP\Tracking\horn-shuckOUT.MP4"
+analyzer = OpticalFlowAnalyzerHornSchunck(vid_path, output_path)
 analyzer.process_video()

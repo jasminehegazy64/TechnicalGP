@@ -31,7 +31,7 @@ class OpticalFlowAnalyzerLucasKanade:
 
             cv2.imshow("Dense Optical Flow", flow_img)
 
-            key = cv2.waitKey(5)
+            key = cv2.waitKey(25)  # Increase the delay to 25 milliseconds
             if key == 27:  # press 'ESC' to exit
                 break
 
@@ -58,4 +58,5 @@ class OpticalFlowAnalyzerLucasKanade:
             cv2.circle(img_bgr, (x1, y1), 1, (0, 255, 0), -1)
 
         return img_bgr
+
 
