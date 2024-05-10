@@ -4,7 +4,9 @@ import numpy as np
 import csv
 from skimage import feature
 #from conversion import convert_fits_to_image
-# from images_Preprocessing.iterative_Threshholding import iterative_thresholding
+
+from Detection import *
+from images_Preprocessing import * 
 from Simulation.features import extract_debris_data
 
 class DebrisAnalyzer:
@@ -83,7 +85,7 @@ class DebrisAnalyzer:
                     lbp_features = feature.local_binary_pattern(roi, P=8, R=1, method='uniform')
                     lbp_mean = np.mean(lbp_features)
                     lbp_std = np.std(lbp_features)
-                    vels=extract_debris_data(self.csv_file_path)
+                    avg_vel, ra_vel, dec_vel, rol_vel =extract_debris_data(self.csv_file_path)
 
                     # Ensure xWidth and yHeight are iterable (lists)
                     xWidth = list(range(w))
@@ -101,4 +103,7 @@ class DebrisAnalyzer:
                     prediction = self.main_inertia(Ixx, Iyy, Ixy, yHeight, xWidth)
 
                     # Write the row to the CSV file
-                    csvwriter.writerow([fits_filename, object_id - 1, area_iterative, edge_count, center_x, center_y, w, h, lbp_mean, lbp_std, vels, vels, vels, vels ,prediction])
+                    csvwriter.writerow([fits_filename, object_id - 1, area_iterative, edge_count, center_x, center_y, w, h, lbp_mean, lbp_std, avg_vel, ra_vel, dec_vel, rol_vel,prediction])
+
+
+

@@ -88,16 +88,19 @@ import cv2
 
 def extract_debris_data(fits_file_path):
     try:
-        hdulist = fits.open(fits_file_path)
-        avg_vel = hdulist[0].header['AVG_VEL']
-        ra_vel = hdulist[0].header['RA_VEL']
-        dec_vel = hdulist[0].header['DEC_VEL']
-        rol_vel = hdulist[0].header['ROL_VEL']
-        hdulist.close()
-        return avg_vel, ra_vel, dec_vel, rol_vel
+        fitsfiles = os.listdir(fits_file_path)
+        for fits_filename in fitsfiles:
+            hdulist = fits.open(fits_file_path)
+            avg_vel = hdulist[0].header.get('AVG_VEL', None)
+            ra_vel = hdulist[0].header.get('RA_VEL', None)
+            dec_vel = hdulist[0].header.get('DEC_VEL', None)
+            rol_vel = hdulist[0].header.get('ROL_VEL', None)
+            hdulist.close()
+            return avg_vel, ra_vel, dec_vel, rol_vel
     except Exception as e:
         print("Error:", e)
-        return None
+        return None, None, None, None
+
 
 def write_to_csv(csv_file_path, data):
     try:
