@@ -76,6 +76,6 @@ fps=5
 
 
 
-output_path = r"C:\Users\USER\Desktop\TechnicalGP\Tracking\horn-shuckOUT.MP4"
-analyzer = OpticalFlowAnalyzerHornSchunck(vid_path, output_path)
-analyzer.process_video()
+# output_path = r"C:\Users\USER\Desktop\TechnicalGP\Tracking\horn-shuckOUT.MP4"
+# analyzer = OpticalFlowAnalyzerHornSchunck(vid_path, output_path)
+# analyzer.process_video()

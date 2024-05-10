@@ -138,7 +138,7 @@ def process_image(image_path):
 def main():
     fits_file_path = r'C:\Users\USER\Desktop\TechnicalGP\2024-001\NEOS_SCI_2024001000312.fits'
     csv_file_path = r'C:\Users\USER\Desktop\TechnicalGP\sim_debris.xlsx'
-    folder_path = r"C:\Users\USER\Desktop\TechnicalGP\images_Preprocessing\iter_images\NEOS_SCI_2024001000312.png"
+    folder_path = r"C:\Users\USER\Desktop\TechnicalGP\images_Preprocessing\iter_images"
 
     debris_data = extract_debris_data(fits_file_path)
     if debris_data:

@@ -3,8 +3,9 @@ import cv2
 import numpy as np
 import csv
 from skimage import feature
-from conversion import convert_fits_to_image
-from images_Preprocessing.iterative_Threshholding import iterative_thresholding
+#from conversion import convert_fits_to_image
+# from images_Preprocessing.iterative_Threshholding import iterative_thresholding
+from Simulation.features import extract_debris_data
 
 class DebrisAnalyzer:
     def __init__(self, threshed_directory, csv_file_path):
@@ -37,7 +38,7 @@ class DebrisAnalyzer:
             csvwriter = csv.writer(csvfile)
 
             # Write the header row
-            csvwriter.writerow(['Image', 'Object ID','Area','Edges','Center_x','Center_y','Width','Height','lbp_mean','lbp_std' ,'Prediction'])
+            csvwriter.writerow(['Image', 'Object ID','Area','Edges','Center_x','Center_y','Width','Height','lbp_mean','lbp_std','AVG_VEL','RA_VEL','DEC_VEL','Rol_vel' ,'Prediction'])
 
             for fits_filename in fitsfiles:
                 # Full path to the FITS file
@@ -82,6 +83,7 @@ class DebrisAnalyzer:
                     lbp_features = feature.local_binary_pattern(roi, P=8, R=1, method='uniform')
                     lbp_mean = np.mean(lbp_features)
                     lbp_std = np.std(lbp_features)
+                    vels=extract_debris_data(self.csv_file_path)
 
                     # Ensure xWidth and yHeight are iterable (lists)
                     xWidth = list(range(w))
@@ -99,4 +101,4 @@ class DebrisAnalyzer:
                     prediction = self.main_inertia(Ixx, Iyy, Ixy, yHeight, xWidth)
 
                     # Write the row to the CSV file
-                    csvwriter.writerow([fits_filename, object_id - 1, area_iterative, edge_count, center_x, center_y, w, h, lbp_mean, lbp_std, prediction])
+                    csvwriter.writerow([fits_filename, object_id - 1, area_iterative, edge_count, center_x, center_y, w, h, lbp_mean, lbp_std, vels, vels, vels, vels ,prediction])
