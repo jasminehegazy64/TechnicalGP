@@ -15,7 +15,7 @@ def images_to_video(image_folder, output_video_path, fps):
         return
     height, width, layers = frame.shape
 
-    fourcc = cv2.VideoWriter_fourcc(*"MP4V")  # Codec to use for video writing
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # Codec to use for video writing
     video = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
     if not video.isOpened():
         print("Error opening video writer.")

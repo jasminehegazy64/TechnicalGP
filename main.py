@@ -8,9 +8,9 @@ import cv2
 import os 
 from Tracking.optical_flow_fernback import OpticalFlowAnalyzer
 from Tracking.Images_to_Vid import images_to_video 
-from Orbit_Determination.orbit_determination import SatelliteAnalyzer
-from Tracking.optical_flow_lucas_kanade import OpticalFlowAnalyzerLucasKanade
-from Tracking.optical_flow_horn_schunk import OpticalFlowAnalyzerHornSchunck
+# from Orbit_Determination.orbit_determination import SatelliteAnalyzer
+# from Tracking.optical_flow_lucas_kanade import OpticalFlowAnalyzerLucasKanade
+# from Tracking.optical_flow_horn_schunk import OpticalFlowAnalyzerHornSchunck
 
 
 
@@ -31,7 +31,7 @@ iterat_images=r'C:\Users\USER\Desktop\TechnicalGP\images_Preprocessing\iter_imag
 
 #detect and label the object in the images
 
-# # Process each image in the input folder
+# Process each image in the input folder
 
 # for filename in os.listdir(iterat_images):
 #     # Load the binary image
@@ -59,7 +59,7 @@ fps=5
 
 #Applying The optical flow (Dense- Fernback)
 
-# output_path=r'C:\Users\USER\Desktop\TechnicalGP\Tracking\fernbackOUT.MP4'
+output_path=r'C:\Users\USER\Desktop\TechnicalGP\Tracking\fernbackOUT.MP4'
 # analyzer = OpticalFlowAnalyzer(vid_path, output_path)
 # analyzer.process_video()
 
@@ -79,3 +79,12 @@ fps=5
 # output_path = r"C:\Users\USER\Desktop\TechnicalGP\Tracking\horn-shuckOUT.MP4"
 # analyzer = OpticalFlowAnalyzerHornSchunck(vid_path, output_path)
 # analyzer.process_video()
+
+
+#tracking num
+# Usage
+
+csv_output_path = r"C:\Users\USER\Desktop\TechnicalGP\trackingvalues.xlsx"
+
+analyzer = OpticalFlowAnalyzer(vid_path, output_path)
+analyzer.process_video(csv_output_path)
